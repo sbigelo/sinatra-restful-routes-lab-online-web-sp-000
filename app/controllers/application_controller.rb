@@ -1,7 +1,7 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
-  # register Sinatra::ActiveRecordExtension
+
   set :views, Proc.new { File.join(root, "../views/") }
 
   configure do
@@ -21,6 +21,10 @@ class ApplicationController < Sinatra::Base
   get '/recipes/:id' do  #loads show page
     @recipe = Recipe.find_by_id(params[:id])
     erb :show
+  end
+
+  post '/recipes' do
+    erb :new
   end
 
 end
